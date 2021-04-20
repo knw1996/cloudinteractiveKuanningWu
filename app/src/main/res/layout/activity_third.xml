@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ThirdViewBinding">
+        <variable name="image" type="com.example.cloudinteractive.model.ImageContent"/>
+        <variable
+            name="thirdViewModel"
+            type="com.example.cloudinteractive.viewmodel.ThirdViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{thirdViewModel::onBack}">
+
+        <ImageView
+            android:id="@+id/displayImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:displayImage="@{image}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/imageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:displayId="@{image.id}"/>
+            <TextView
+                android:id="@+id/imageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@{image.title}"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

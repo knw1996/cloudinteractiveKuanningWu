@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="ImageItemBinding">
+        <variable name="image" type="com.example.cloudinteractive.model.ImageContent"/>
+        <variable name="callback" type="com.example.cloudinteractive.view.ImageClickCallback"/>
+    </data>
+
+    <com.example.cloudinteractive.view.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageLayout"
+        android:onClick="@{() ->  callback.onClick(image)}"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:displayImage="@{image}"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/imageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:displayId="@{image.id}"/>
+            <TextView
+                android:id="@+id/imageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:text="@{image.title}"/>
+        </LinearLayout>
+    </com.example.cloudinteractive.view.SquareLayout>
+</layout>
